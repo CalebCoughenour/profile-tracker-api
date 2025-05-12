@@ -2,21 +2,21 @@
 <html>
     <head>
         <title>{% block title %}Bonanza Tracker{% endblock %}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
     </head>
     <body>
         <header>
             <h1>Bonanza Crypto & Stock Tracker</h1>
             <nav>
                 <a href="{{ url_for('main.home') }}">Home</a>
-                <a href="{{ url_for('main.home') }}">Crypto</a>
-                <a href="{{ url_for('main.home') }}">Stocks</a>
+                <a href="{{ url_for('main.crypto_dashboard') }}">Crypto</a>
+                <a href="{{ url_for('main.stock_dashboard') }}">Stocks</a>
             </nav>
             <hr>
         </header>
 
         <main>
-            {% with messages = get_flashed_messages(with_categories=true) $}
+            {% with messages = get_flashed_messages(with_categories=true) %}
                 {% for category, message in messages %}
                     <p class="flash {{ category }}">{{ message }}</p>
                 {% endfor %}
@@ -27,7 +27,7 @@
 
         <footer>
             <hr>
-            <p>%copy; {{ current_year }} Bonanza Tracker</p>
+            <p>&copy; {{ current_date }}{{ current_year }} Bonanza Tracker</p>
         </footer>
     </body>
 </html>
