@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Finance Portfolio Tracker</title>
-    </head>
-    <body>
-        <h1>Bonanza Portfolio Tracker</h1>
-        <p>We'll track crypto and stocks in one place!</p>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Bonanza Home - Crypto & Stock Tracker{% endblock %}
+
+{% block content %}
+    <h2>Welcome to Bonanza Dashboard</h2>
+    <p>Track cryptocurrency and stock market prices in one place.</p>
+    <div>
+        <h3>Get Started:</h3>
+        <ul>
+            <li><a href="{{ url_for{'main.crypto_dashboard'} }}">Cryptocurrency</a></li>
+            <li><a href="{{ url_for{'main.stock_dashboard'} }}">Stock Market</a></li>
+        </ul>
+    </div>
+{% endblock %}
