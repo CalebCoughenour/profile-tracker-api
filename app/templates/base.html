@@ -8,8 +8,10 @@
         <header>
             <nav>
                 <a href="{{ url_for('main.home') }}">Home</a>
-                <a href="{{ url_for('main.crypto_dashboard') }}">Crypto</a>
-                <a href="{{ url_for('main.stock_dashboard') }}">Stocks</a>
+                <a href="{{ url_for('crypto.crypto_home') }}">Crypto</a>
+                <a href="{{ url_for('stocks.stocks_home') }}">Stocks</a>
+                <a href="{{ url_for('crypto.crypto_dashboard') }}">Crypto Dash</a>
+                <a href="{{ url_for('stocks.stocks_dashboard') }}">Stock Dash</a>
             </nav>
             <hr>
         </header>
