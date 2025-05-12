@@ -1,14 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Bonanza Home - Crypto & Stock Tracker{% endblock %}
+{% block title %}Home - Bonanza Tracker{% endblock %}
 
 {% block content %}
-    <h2>Welcome to Bonanza Dashboard</h2>
-    <p>Track cryptocurrency and stock market prices in one place.</p>
-    <div>
-        <h3>Get Started:</h3>
-        <ul>
-            <li><a href="{{ url_for('main.crypto_dashboard') }}">Cryptocurrency</a></li>
-            <li><a href="{{ url_for('main.stock_dashboard') }}">Stock Market</a></li>
-        </ul>
+<h1 align="center">Welcome to Bonanza Tracker</h1>
+
+<div style="display: flex; gap: 30px; justify-content: center; margin-top: 40px;">
+    <div style="border: 1px solid #ccc; padding: 20px; width: 300px; text-align: center;">
+        <h2>Crypto Tracker</h2>
+        <p>Monitor prices, manage portfolios, and track coins in real time.</p>
+        <a href="{{ url_for('main.crypto_dashboard') }}">Go to Crypto</a>
     </div>
+    
+    <div style="border: 1px solid #ccc; padding: 20px; width: 300px; text-align: center;">
+        <h2>Stock Tracker</h2>
+        <p>Track stocks, manage watchlists, and build your portfolio.</p>
+        <a href="{{ url_for('main.stock_dashboard') }}">Go to Stocks</a>
+    </div>
+</div>
 {% endblock %}
