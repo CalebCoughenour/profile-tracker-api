@@ -1,0 +1,9 @@
+#crypto-ticker {
+    animation: scroll-left 30s linear infinite;
+    display: inline-block;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
