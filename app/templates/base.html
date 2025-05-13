@@ -2,16 +2,21 @@
 <html>
     <head>
         <title>{% block title %}Bonanza Tracker{% endblock %}</title>
-        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
-            <nav>
-                <a href="{{ url_for('main.home') }}">Home</a>
-                <a href="{{ url_for('crypto.crypto_home') }}">Crypto</a>
-                <a href="{{ url_for('stocks.stocks_home') }}">Stocks</a>
-                <a href="{{ url_for('crypto.crypto_dashboard') }}">Crypto Dash</a>
-                <a href="{{ url_for('stocks.stocks_dashboard') }}">Stock Dash</a>
+            <nav style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                
+                <div id="crypto-ticker" style="overflow-x: auto; white-space: nowrap; font-weight: bold;"></div>
+                
+                <div>
+                    <a href="{{ url_for('main.home') }}">Home</a>
+                    <a href="{{ url_for('crypto.crypto_home') }}">Crypto</a>
+                    <a href="{{ url_for('stocks.stocks_home') }}">Stocks</a>
+                    <a href="{{ url_for('crypto.crypto_dashboard') }}">Crypto Dash</a>
+                    <a href="{{ url_for('stocks.stocks_dashboard') }}">Stock Dash</a>
+                </div>
             </nav>
             <hr>
         </header>
@@ -30,5 +35,32 @@
             <hr>
             <p>&copy; {{ current_date }}{{ current_year }} Bonanza Tracker</p>
         </footer>
+
+
+
+        <!-- Start Javascript -->
+         <script>
+            async function updateCryptoTicker() {
+                try {
+                    const res = await fetch("/crypto/ticker-prices");
+                    const data = await res.json();
+                    const ticker = document.getElementById("crypto-ticker");
+                    ticker.innerHTML;
+                    for (const [coin, info] of Object.entries(data)) {
+                        const span = document.createElement("span");
+                        span.style.marginRight = "20px";
+                        span.textContent = `${coin.charAt(0).toUpperCase() + coin.slice(1)}: $${info.usd}`;
+                        ticker.appendChild(span);
+                    }
+                } catch(err) {
+                    console.error("Failed to fetch prices", err);
+                }
+            }
+
+            updateCryptoTicker();
+            setInterval(updateCryptoTicker, 60000);
+         </script>
+
+
     </body>
 </html>
